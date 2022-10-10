@@ -1,5 +1,5 @@
 from django.urls import path
-
+from rest_framework import routers
 from ads.views import (
     AdListView,
     AdDetailView,
@@ -14,6 +14,11 @@ from ads.views import (
     CategoryCreateView,
     index,
 )
+from ads.views.location import LocatViewSet
+
+
+router = routers.SimpleRouter()
+router.register("location", LocatViewSet)
 
 urlpatterns = [
     path("", index),
@@ -29,3 +34,5 @@ urlpatterns = [
     path("cat/<int:pk>/delete/", CategoryDeleteView.as_view()),
     path("cat/create/", CategoryCreateView.as_view()),
 ]
+
+urlpatterns += router.urls

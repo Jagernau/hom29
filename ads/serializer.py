@@ -4,6 +4,13 @@ from users.models import User
 from rest_framework.generics import get_object_or_404
 
 
+
+class LocatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = "__all__"
+
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
